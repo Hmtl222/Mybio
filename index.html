@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Poppins");
+
+        :root {
+            --font-family: "Poppins", sans-serif;
+            --black: #212121;
+            --white: #f1f1f1;
+            --time: 0.5s;
+            --timing-function: ease-in-out;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 14px;
+            background-color: #f8f8f8;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profileCard {
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            overflow: hidden;
+            position: relative;
+            transition: transform var(--timing-function) var(--time);
+        }
+
+        .profileCard .profileImage {
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .profileCard .profileImage img {
+            width: 100%;
+            transition: transform var(--timing-function) var(--time);
+        }
+
+        .profileCard .info {
+            position: absolute;
+            bottom: 20px;
+            left: 1rem;
+            font-size: 1.2rem;
+            color: white;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profileCard .info .viewMore {
+            display: flex;
+            align-items: center;
+        }
+
+        .profileCard .info button {
+            margin-left: 10px;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: transform var(--timing-function) var(--time);
+        }
+
+        .profileCard .info button:hover {
+            transform: scale(1.1);
+        }
+
+        .profileCard .profileInfo {
+            padding: 1rem;
+            text-align: center;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform var(--timing-function) var(--time), opacity var(--timing-function) var(--time);
+        }
+
+        .profileCard .profileInfo .name {
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .profileCard .profileInfo .designation {
+            font-size: 1rem;
+            color: gray;
+        }
+
+        .profileCard .profileInfo .description {
+            font-size: 0.9rem;
+            margin: 10px 0;
+            text-align: justify;
+        }
+
+        .profileCard .profileInfo hr {
+            width: 80%;
+            margin: 10px auto;
+            border: 0.5px solid #ddd;
+        }
+
+        .profileCard .profileInfo .follow {
+            display: flex;
+            justify-content: space-around;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .profileCard .profileInfo .backBtn {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Анимация открытия */
+        .profileCard.active {
+            transform: scale(1.05);
+        }
+
+        .profileCard.active .profileImage img {
+            transform: scale(0.8);
+        }
+
+        .profileCard.active .profileInfo {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profileCard">
+            <div class="profileImage">
+                <img src="https://bairesdev.mo.cloudinary.net/blog/2023/09/How-Many-Web-Developers-in-the-World-1.jpg?tx=w_1920,q_auto" alt="Profile Image">
+                <div class="info">
+                    <div class="viewMore">
+                        <span class="name">Rasul Ibrahimov</span>
+                        <button class="trigger">
+                            <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <span class="designation">Fullstack Developer</span>
+                </div>
+            </div>
+            <div class="profileInfo">
+                <div class="name">Rasul Ibrahimov</div>
+                <div class="designation">Fullstack Developer</div>
+                <div class="description">
+                    Всем привет!Мне 13 лет, учусь в 8 классе,Я  учусь на Fullstack разработчика.
+                    Люблю плавать и путешествовать.Я дружелюбный человек
+                </div>
+                <hr>
+                <div class="follow">
+                    <span class="followers">2k</span>
+                    <span class="following">1402</span>
+                </div>
+                <button class="backBtn trigger">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let profileCard = document.querySelector(".profileCard");
+            let triggers = document.querySelectorAll(".trigger");
+
+            triggers.forEach(button => {
+                button.addEventListener("click", function () {
+                    profileCard.classList.toggle("active");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
